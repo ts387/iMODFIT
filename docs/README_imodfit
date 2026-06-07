@@ -1,0 +1,162 @@
+
+###############################################
+#  --- iMODFIT 1.51 (from release v1.07) ---  #
+#  --- Chacon's lab - Feb 28th, 2019     ---  # 
+###############################################
+
+The last stable version of iMODFIT (v1.44) is released with
+other EM tools.
+
+
+-------------------------------------------------------
+iMODFIT (Internal coordinates normal MODe based FITing)
+-------------------------------------------------------
+
+We provide 64-bit LINUX statically linked executables generated with GNU
+compilers to minimize library dependence problems. Dynamic linking was used 
+for the faster Intel Math Kernel Library (MKL) version.
+
+> Programs provided
+-------------------
+imodfit           v1.51 --> Flexible fitting tool.
+pdb2vol           v1.01 --> Simulated maps generation from PDB files.
+rmsd              v1.04 --> Optimal atomic structures alignment (RMSD min.). 
+pdbtool           v1.01 --> Atomic structures manipulation tool.
+
+*All the programs show a basic help text using the --help option.
+
+> Binaries releases
+-------------------
+
+Pre-compiled binaries are available in the corresponding bin/ directory. You 
+can choose the appropriate release for your system:
+
+ [Program]        Compiler    Libraries              Linkage
+ -----------------------------------------------------------
+*<TOOL>           Intel icpc  -                       static
+ <TOOL>_gcc       GNU gcc     -                       static
+*<TOOL>_mkl       Intel icpc  MKL                    dynamic
+
+* Intel compiled binaries are the fastest alternatives. 
+<TOOL> corresponds to the name of the program.
+
+
+------------
+REQUIREMENTS
+------------
+
+This software release has been compiled with 64-bit Intel "icpc"
+(v. 19.0.2.187) and GNU "gcc" (7.3.0).
+
+Statically linked executables are ready-to-use (nothing else required).
+
+The following libraries may be required only to run the pre-compiled binaries 
+of the Intel MKL release:
+
+- Intel's C++ Compiler and Math Kernel Library - Current tested icpc version
+19.0.2.187 (gcc version 7.3.0 compatibility).
+
+Please, download and install the Intel C++ Compiler and Math Kernel Library:
+  "Intel C++ Parallel Studio XE 2019 update-2 for Linux" (current tested 
+  version is 19.0.2.187)
+
+Newer Intel MKL versions should work as well.
+
+Intel C++ Compiler and MKL libraires can be obtained for from Intel's web site:
+http://software.intel.com/en-us/articles/non-commercial-software-download/
+
+
+--------------------
+iMODFIT IMPROVEMENTS
+--------------------
+
+The main improvements of v1.51 with respect to the previous (v1.44) are:
+
+- Integration with Chimera's plug-in.
+- Minor bugs removed.
+
+The main improvements with respect to older versions are:
+
+- Improved stability for very big and/or symmetrical macromolecular complexes.
+- Improved speed thanks to our new parallel band-Krylov eigensolver:
+ Aliaga JI, Alonso P, Badia JM, Chacon P, Davidovic D, Lopez-Blanco JR, and Quintana-Orti ES
+ (2016). A fast band-Krylov eigensolver for macromolecular functional motion simulation on
+ multicore architectures and graphics processors. Journal of Computational 
+ Physics 309:314-323.
+- Improved default parameters.
+- Minor bugs removed.
+
+
+--------
+TUTORIAL
+--------
+
+We encourage you to visit our web site and follow the tutorials:
+
+  http://chaconlab.org/methods/fitting/imodfit/imodfit-tuto
+
+*Some files to be used in the tutorial can be found in the imodfit_test/ 
+directory.
+
+
+---------------
+iMODFIT EXAMPLE
+---------------
+
+We have included a simple test case in the imodfit_test/ subdirectory. 
+
+The basic flexible fitting procedure is very simple. Please, just copy and 
+paste the following commands in your terminal:
+
+ Go to the test directory
+  $ cd imodfit_test
+
+ Perform the basic flexible fitting with a 10A target map
+  $ ../bin/imodfit_mkl 1sx4A.pdb 1oel.ccp4 10 0 -t
+ 
+ Check iMODFIT performance by directly visualizing the fitting movie
+ (imodfit_movie.pdb) in your favorite viewer (VMD works fine). 
+ 
+ Alternatively, compute the C-alpha RMSD between the fitted model and the PDB
+ employed to simulate the target map:
+  $ ../bin/rmsd imodfit_fitted.pdb 1oel.pdb -c 
+
+ The final C-alpha RMSD is just 1.3752 A (1.2098 A after optimal alignment).
+ 
+ You can try the flexible fitting in the opposite direction:
+  $ ../bin/imodfit_mkl 1sx4A.pdb 1oel.ccp4 10 0 -t
+ 
+The complete test takes around 13/8 minutes for gcc/intel binaries using an
+Intel(R) Core(TM) i7 CPU 950 running at 3.07GHz.
+
+
+----------
+REFERENCES
+----------
+
+Please, cite our work if any of our tools become useful for your research.
+
+iMODFIT: Efficient and robust flexible fitting based on vibrational analysis 
+in internal coordinates (2013). Lopez-Blanco JR and Chacon P. JSB
+184(2):261-270.
+
+
+-------
+CONTACT
+-------
+
+Please, feel free to contact with us!
+(Any suggestion or bug report is welcome)
+
+Jose Ramon Lopez-Blanco (PhD.)
+jrlopez(at)iqfr.csic.es
+
+Pablo Chacon (PhD.)
+pablo(at)chaconlab.org
+
+
+Structural Bioinformatics Group
+IQFR-CSIC - Madrid (Spain)
+(http://chaconlab.org)
+
+

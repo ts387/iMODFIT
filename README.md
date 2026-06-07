@@ -59,7 +59,9 @@ The Colab notebook uses the **`_gcc`** build for zero‑configuration reproducib
    - `apt-get install` the runtime libraries,
    - run the bundled **GroEL** fitting example,
    - report the C‑α RMSD, plot the convergence, and render the fit in 3D,
-   - and give you a ready‑to‑edit template to fit **your own** structure + map.
+   - give you a ready‑to‑edit template to fit **your own** structure + map,
+   - and a **batch mode** to fit one model into many maps at once (each result is
+     named after its map, e.g. `stateA.ccp4` → `stateA_fitted.pdb`).
 
 ## Quick start (local Linux, 64‑bit)
 

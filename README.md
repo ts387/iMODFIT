@@ -83,7 +83,7 @@ cd imodfit_test
 
 | Argument        | Meaning |
 |-----------------|---------|
-| `<pdb>`         | Initial atomic model to be deformed. |
+| `<pdb>`         | Initial atomic model to be deformed. **Legacy PDB only** (`.pdb`/`.ent`) — *not* mmCIF. Convert `.cif` first, e.g. `gemmi convert in.cif out.pdb` (the Colab notebook has a cell for this). |
 | `<map>`         | Target cryo‑EM map (`.ccp4` / `.mrc` / Situs `.sit`). |
 | `<resolution>`  | Map resolution in Å (must match the map). |
 | `<cutoff>`      | Density threshold; `0` uses the whole map. Set to the map's recommended contour level to ignore background/noise. |
